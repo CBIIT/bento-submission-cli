@@ -6,7 +6,7 @@ import datetime
 from getpass import getpass
 from utils import LIST_JOBS_ACTION, JOB_STATUS_ACTION, LOAD_ACTION, VALIDATE_ACTION, PSWD_ENV, get_logger
 
-def parseArguments():
+def parse_arguments():
     parser = argparse.ArgumentParser(description='Load data into ICDC')
     parser.add_argument('-u', '--user', help='ICDC username', required=True)
     parser.add_argument('-p', '--password', help='ICDC password')
@@ -27,7 +27,7 @@ def parseArguments():
 
     return parser.parse_args()
 
-def processArguments(args, log):
+def process_arguments(args, log):
     directory = args.dir if hasattr(args, 'dir') else None
 
     if directory and not os.path.isdir(directory):
@@ -55,8 +55,8 @@ def processArguments(args, log):
 
 def main():
     log = get_logger('Data Pipeline')
-    args = parseArguments()
-    user, password, directory = processArguments(args, log)
+    args = parse_arguments()
+    user, password, directory = process_arguments(args, log)
 
 
     try:
